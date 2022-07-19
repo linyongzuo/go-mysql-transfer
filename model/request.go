@@ -1,6 +1,9 @@
 package model
 
-import "sync"
+import (
+	"github.com/siddontang/go-mysql/schema"
+	"sync"
+)
 
 var RowRequestPool = sync.Pool{
 	New: func() interface{} {
@@ -14,6 +17,7 @@ type RowRequest struct {
 	Timestamp uint32
 	Old       []interface{}
 	Row       []interface{}
+	Table     *schema.Table
 }
 
 type PosRequest struct {
